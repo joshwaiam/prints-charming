@@ -1,0 +1,47 @@
+{
+  "name": "prints-charming",
+  "version": "1.0.0",
+  "description": "Monitors our office printer (prints-charming) and reports status errors to Slack",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "nodemon --config ./nodemon.json",
+    "start": "node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshwaiam/prints-charming.git"
+  },
+  "author": "Josh Payette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshwaiam/prints-charming/issues"
+  },
+  "homepage": "https://github.com/joshwaiam/prints-charming#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pino": "^5.13.5",
+    "puppeteer": "^2.0.0",
+    "slackbots": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^12.12.6",
+    "@types/pino": "^5.8.13",
+    "@types/puppeteer": "^1.20.2",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^1.19.4",
+    "pino-pretty": "^3.3.0",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  }
+}

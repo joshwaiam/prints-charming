@@ -1,0 +1,19 @@
+[Unit]
+Description=Monitors Prints Charming printing status
+
+[Service]
+ExecStart=/usr/bin/nodejs /home/josh/Desktop/apps/prints-charming/dist/index.js
+# Required on some systems
+#WorkingDirectory=/home/josh/Desktop/apps/prints-charming/dist
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=10
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=prints-charming
+Environment=NODE_ENV=production PORT=1338
+User=josh
+
+[Install]
+WantedBy=multi-user.target
