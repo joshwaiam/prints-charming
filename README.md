@@ -1,6 +1,6 @@
 # Prints-Charming
 
-This tool will retrieve errors from the dashboard for a Canon iR-ADV C5550 printer and write them to a Slack channel.
+This tool will retrieve errors from the dashboard for a Canon iR-ADV C5550 printer and write them to a Slack channel and a Microsoft Teams channel.
 
 In our office, our main printer is used to print a large quality of booklets, so errors will happen when paper runs out, toner needs to be changed, etc. Not catching these errors right away can lead to many unnecessary delays in print jobs completing. This tool notifies members of a Slack channel within 45 seconds if the printer goes into an error state.
 
@@ -21,7 +21,7 @@ This code has some specific implementation related to our local setup. However, 
 1. Follow the above steps in Getting Started.
 2. Run `npm run build`.
 3. Copy `prints-charming.service` to `etc/systemd/system` - `sudo cp ~/Desktop/apps/prints-charming/prints-charming.service /etc/systemd/system/prints-charming.service`
-4. Ensure service is running with `systemctl status prints-charming.service`.  You can also `start`, `stop`, or `restart` in place of `status`.
+4. Ensure service is running with `systemctl status prints-charming.service`. You can also `start`, `stop`, or `restart` in place of `status`.
 
 ## Credits
 
