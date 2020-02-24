@@ -1,7 +1,7 @@
 {
   "name": "prints-charming",
   "version": "1.0.0",
-  "description": "Monitors our office printer (prints-charming) and reports status errors to Slack",
+  "description": "Monitors our office printer (prints-charming) and reports status errors to Microsoft Teams",
   "main": "index.js",
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
@@ -23,8 +23,7 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "pino": "^5.13.5",
-    "puppeteer": "^2.0.0",
-    "slackbots": "^1.2.0"
+    "puppeteer": "^2.0.0"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

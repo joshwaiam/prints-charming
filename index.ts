@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import * as SlackBot from "slackbots";
 import * as dotenv from "dotenv";
 import * as puppeteer from "puppeteer";
 import logger from "./logger";
@@ -7,26 +6,11 @@ const axios = require("axios").default;
 
 dotenv.config({ path: __dirname + "/.env" });
 
-const token = process.env.SLACK_TOKEN;
-const name = process.env.SLACK_BOT_NAME;
 const url = process.env.PRINTER_URL;
-const channel = process.env.SLACK_CHANNEL;
 const interval = parseInt(process.env.CHECK_INTERVAL, 10) * 1000;
 const teamsUrl = process.env.TEAMS_URL;
-// eslint-disable-next-line @typescript-eslint/camelcase
-const messageParams = { link_names: true };
 
-let previousSlackMessage = "";
-let previousTeamsMessage = "";
-
-const bot = new SlackBot({
-  token,
-  name
-});
-
-bot.on("start", async () => {
-  setInterval(checkPrinterErrors, interval);
-});
+let previousMessage = "";
 
 const checkPrinterErrors = async (): Promise<void> => {
   let browser: puppeteer.Browser;
@@ -86,18 +70,13 @@ const checkPrinterErrors = async (): Promise<void> => {
   }
 
   /** Format the message to send back */
-  let slackMessage: string;
-  let teamsMessage: string;
+  let message: string;
   if (errorsToReport.length === 0) {
-    slackMessage = ":success: Prints Charming is error free!";
-    teamsMessage = "Prints Charming is error free!";
+    message = "Prints Charming is error free!";
   } else {
-    slackMessage =
-      ":warning: @channel\nPrints Charming has the following errors:\n";
-    teamsMessage = "Prints Charming has the following errors:\n";
+    message = "Prints Charming has the following errors:\n";
     errorsToReport.map(e => {
-      slackMessage += `*${e}*\n`;
-      teamsMessage += `*${e}*\n`;
+      message += `*${e}*\n`;
     });
   }
 
@@ -107,17 +86,15 @@ const checkPrinterErrors = async (): Promise<void> => {
   logger.info("Error check complete.");
 
   /** Exit if the error message is the same as the last check */
-  if (
-    slackMessage === previousSlackMessage ||
-    teamsMessage === previousTeamsMessage
-  ) {
+  if (message === previousMessage) {
     return;
   }
 
-  previousSlackMessage = slackMessage;
-  previousTeamsMessage = teamsMessage;
-  /** Post to Slack */
-  bot.postMessageToChannel(channel, slackMessage, messageParams);
+  previousMessage = message;
+
   /** Post to Teams */
-  await axios.post(teamsUrl, { text: teamsMessage });
+  await axios.post(teamsUrl, { text: message });
 };
+
+/** Start the timer */
+setInterval(checkPrinterErrors, interval);

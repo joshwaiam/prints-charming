@@ -1,12 +1,12 @@
 # Prints-Charming
 
-This tool will retrieve errors from the dashboard for a Canon iR-ADV C5550 printer and write them to a Slack channel and a Microsoft Teams channel.
+This tool will retrieve errors from the dashboard for a Canon iR-ADV C5550 printer and write them to a Microsoft Teams channel.
 
-In our office, our main printer is used to print a large quality of booklets, so errors will happen when paper runs out, toner needs to be changed, etc. Not catching these errors right away can lead to many unnecessary delays in print jobs completing. This tool notifies members of a Slack channel within 45 seconds if the printer goes into an error state.
+In our office, our main printer is used to print a large quality of booklets, so errors will happen when paper runs out, toner needs to be changed, etc. Not catching these errors right away can lead to many unnecessary delays in print jobs completing. This tool notifies members of a Teams channel within 45 seconds if the printer goes into an error state.
 
 ## Using this repo
 
-This code has some specific implementation related to our local setup. However, there are some broad strokes here regarding scraping a web page with dynamic content and sending it to a Slack channel that you can run with. I use environment variables for much of the customization, aside from the actual DOM nodes to target and parse.
+This code has some specific implementation related to our local setup. However, there are some broad strokes here regarding scraping a web page with dynamic content and sending it to a Teams channel that you can run with. I use environment variables for much of the customization, aside from the actual DOM nodes to target and parse.
 
 ### Getting started
 
